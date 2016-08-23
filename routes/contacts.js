@@ -49,6 +49,7 @@ router.get('/', isAuthenticated, function(req, res) {
 
         res.render('contacts', {
             title: 'Contacts List',
+            id: req.user._id,
             contacts: body.contacts,
             pagination: body.pagination
         });
@@ -205,6 +206,48 @@ router.get('/:id', isAuthenticated, function(req, res) {
         }
 
         res.render('contact', {
+            title: 'Contact',
+            user: body,
+            contacts: body
+        });
+    });
+});
+
+/**
+ * Generate random contacts
+ */
+router.get('/contacts', isAuthenticated, function(req, res) {
+    request.get({
+        url: config.api.host + '/contacts/generate',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': config.passport.strategies.jwt.authScheme + ' ' + req.session.token
+        }
+    }, function (error, response, body) {
+        //Check for error
+        if (error) {
+            return res.render('error', {
+                title: 'Contacts Get Error',
+                error: error
+            });
+        }
+
+        body = JSON.parse(body);
+
+        //Check for right status code
+        if (response.statusCode !== 200) {
+            return res.render('error', {
+                title: 'Contacts Get Error',
+                error: body
+            });
+        }
+
+        // Refresh token if exists in response header
+        if (response.headers['authorization']) {
+            req.session.token = response.headers['authorization'];
+        }
+
+        res.json('contact', {
             title: 'Contact',
             user: body,
             contacts: body

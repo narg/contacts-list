@@ -9,47 +9,57 @@
     </button>
 </div>
 
+<p>
+    Your user id is: <strong>{{id}}</strong>
+</p>
+
 <div class="directory-info-row">
     <h1>{{title}}</h1>
 
     <div class="row" id="contacts">
-        {{#each contacts}}
-            <div class="col-md-6 col-sm-12">
-                <div class="panel">
-                    <div class="panel-body">
-                        <div class="media">
-                            <a class="pull-left" href="/contacts/{{_id}}">
-                                <img class="thumb media-object"
-                                     src="{{picture}}" alt="">
-                            </a>
-                            <div class="media-body">
-                                <h4>{{fullName name}}</h4>
-                                <ul class="social-links">
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips"
-                                           href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips"
-                                           href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
-                                    </li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips"
-                                           href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a>
-                                    </li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips"
-                                           href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                                <address>
-                                    {{location.street}}<br>
-                                    {{location.city}}, {{location.state}}<br>
-                                    {{location.zip}}<br>
-                                    <abbr title="Phone">P:</abbr> {{phone}}<br>
-                                    <abbr title="Cell">C:</abbr> {{cell}}
-                                </address>
+        {{#if contacts}}
+            {{#each contacts}}
+                <div class="col-md-6 col-sm-12">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="media">
+                                <a class="pull-left" href="/contacts/{{_id}}">
+                                    <img class="thumb media-object"
+                                         src="{{picture}}" alt="">
+                                </a>
+                                <div class="media-body">
+                                    <h4>{{fullName name}}</h4>
+                                    <ul class="social-links">
+                                        <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips"
+                                               href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
+                                        </li>
+                                        <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips"
+                                               href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
+                                        </li>
+                                        <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips"
+                                               href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                                        </li>
+                                        <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips"
+                                               href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
+                                    </ul>
+                                    <address>
+                                        {{location.street}}<br>
+                                        {{location.city}}, {{location.state}}<br>
+                                        {{location.zip}}<br>
+                                        <abbr title="Phone">P:</abbr> {{phone}}<br>
+                                        <abbr title="Cell">C:</abbr> {{cell}}
+                                    </address>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        {{/each}}
+            {{/each}}
+        {{else}}
+            <button type="button" class="btn btn-info btn-lg" onclick="generateContacts()">
+                Generate contacts
+            </button>
+        {{/if}}
     </div>
     <div class="row text-center" id="pagination">
         {{> pagination this }}
@@ -59,7 +69,6 @@
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
@@ -75,3 +84,19 @@
         </div>
     </div>
 </div>
+
+<script type="application/javascript">
+    var generateContacts = function() {
+        if(confirm("Are you sure you want to generate random contacts?"))
+        {
+            $.ajax({
+                url: '/contacts/generate',
+                type: 'GET',
+                success: function(result) {
+                    document.location.href="/contacts";
+                }
+            });
+        }
+        return false;
+    }
+</script>
