@@ -1,0 +1,175 @@
+
+<form class="form-horizontal" method="post" action="/contacts/{{user._id}}">
+    <fieldset>
+        <!-- Title -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="title">
+                Title
+            </label>
+
+            <div class="col-md-4">
+                <label class="radio-inline" for="title-0">
+                    <input type="radio" name="title" id="title-0" value="miss" checked="checked">
+                    Miss
+                </label>
+                <label class="radio-inline" for="title-1">
+                    <input type="radio" name="title" id="title-1" value="mrs">
+                    Mrs
+                </label>
+                <label class="radio-inline" for="title-0">
+                    <input type="radio" name="title" id="title-2" value="mr">
+                    Mr
+                </label>
+            </div>
+        </div>
+
+        <!-- First Name -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="first">
+                First Name
+            </label>
+
+            <div class="col-md-4">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-user">
+                        </i>
+                    </div>
+                    <input id="first" name="first" type="text" placeholder="First Name"
+                           class="form-control input-md" value="{{user.name.first}}">
+                </div>
+            </div>
+        </div>
+
+        <!-- Last Name -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="last">
+                Last Name
+            </label>
+
+            <div class="col-md-4">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-user">
+                        </i>
+                    </div>
+                    <input id="last" name="last" type="text" placeholder="Last Name"
+                           class="form-control input-md" value="{{user.name.last}}">
+                </div>
+            </div>
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="gender">
+                Gender
+            </label>
+
+            <div class="col-md-4">
+                <label class="radio-inline" for="gender-0">
+                    <input type="radio" name="gender" id="gender-0" value="male" checked="checked">
+                    Male
+                </label>
+                <label class="radio-inline" for="gender-1">
+                    <input type="radio" name="gender" id="gender-1" value="female">
+                    Female
+                </label>
+            </div>
+        </div>
+
+        <!-- Location -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="street">
+                Location
+            </label>
+
+            <div class="col-md-4 ">
+                <input id="street" name="street" type="text" placeholder="Street"
+                       class="form-control input-md " value="{{user.location.street}}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="city"></label>
+
+            <div class="col-md-2 col-xs-4">
+                <input id="city" name="city" type="text" placeholder="City"
+                       class="form-control input-md" value="{{user.location.city}}">
+            </div>
+            <div class="col-md-2 col-xs-4">
+                <input id="state" name="state" type="text" placeholder="State"
+                       class="form-control input-md" value="{{user.location.state}}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="zip"></label>
+            <div class="col-md-2 col-xs-4">
+                <input id="zip" name="zip" type="text" placeholder="ZIP"
+                       class="form-control input-md " value="{{user.location.zip}}">
+            </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="phone">Phone</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+                    <input id="phone" name="phone" type="text"
+                           placeholder="Phone" class="form-control input-md" value="{{user.phone}}">
+                </div>
+            </div>
+        </div>
+
+        <!-- Cell -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="cell">Cell</label>
+            <div class="col-md-4">
+                <div class="input-group othertop">
+                    <div class="input-group-addon"><i class="fa fa-mobile fa-1x"
+                                                      style="font-size: 20px;"></i></div>
+                    <input id="cell" name="cell" type="text"
+                           placeholder="Cell" class="form-control input-md" value="{{user.cell}}">
+                </div>
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="email">Email</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-envelope-o"></i></div>
+                    <input id="email" name="email" type="text" placeholder="Email"
+                           class="form-control input-md" value="{{user.email}}">
+                </div>
+            </div>
+        </div>
+
+        <!-- Picture URL -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="picture">
+                Picture URL
+            </label>
+
+            <div class="col-md-4">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-user">
+                        </i>
+                    </div>
+                    <input id="picture" name="picture" type="picture" placeholder="Picture URL"
+                           class="form-control input-md" value="{{user.picture}}">
+                </div>
+            </div>
+        </div>
+
+        <!-- Create -->
+        <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-4">
+                <button type="submit" class="btn btn-default">Update</button>
+            </div>
+        </div>
+    </fieldset>
+</form>

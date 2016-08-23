@@ -1,0 +1,93 @@
+<link rel='stylesheet' href='/stylesheets/home.css'/>
+
+<h5>{{title}}</h5>
+<div style="float: right">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#updateModal">
+        Update contact
+    </button>
+
+    <button type="button" class="btn btn-danger btn-lg" onclick="deleteUser('{{user._id}}')">
+        Delete contact
+    </button>
+
+    <!-- Button trigger modal -->
+    <!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#updateModal">
+        Delete
+    </button>-->
+</div>
+
+<div class="directory-info-row">
+    <div class="col-md-6 col-sm-12">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="/contacts/{{user._id}}">
+                        <img class="thumb media-object"
+                             src="{{user.picture}}" alt="">
+                    </a>
+                    <div class="media-body">
+                        <h4>{{fullName user.name}}</h4>
+                        <ul class="social-links">
+                            <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips"
+                                   href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips"
+                                   href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips"
+                                   href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                            <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips"
+                                   href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
+                        </ul>
+                        <address>
+                            {{user.location.street}}<br>
+                            {{user.location.city}}, {{user.location.state}}<br>
+                            {{user.location.zip}}<br>
+                            <abbr title="Phone">P:</abbr> {{user.phone}}<br>
+                            <abbr title="Cell">C:</abbr> {{user.cell}}
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="updateModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Update Contact</h4>
+            </div>
+            <div class="modal-body">
+                {{> updateContactForm this }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="application/javascript">
+    var deleteUser = function(id) {
+        console.log('delete user =>', id);
+        if(confirm("Are you sure you want to navigate away from this page?"))
+        {
+            $.ajax({
+                url: '/contacts/' + id,
+                type: 'DELETE',
+                success: function(result) {
+                    document.location.href="/contacts";
+                }
+            });
+        }
+        return false;
+    }
+</script>
