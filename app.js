@@ -7,6 +7,7 @@ var session = require('express-session');
 var redisStore = require('connect-redis')(session);
 var redis = require('redis');
 var bodyParser = require('body-parser');
+var helmet = require('helmet');
 
 var handlebars = require('./modules/handlebars');
 var authenticator = require('./modules/authenticator');
@@ -25,6 +26,7 @@ app.engine('hbs', handlebars);
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
+app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());

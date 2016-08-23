@@ -135,7 +135,6 @@ router.post('/:id', isAuthenticated, function(req, res) {
  * DELETE a contact
  */
 router.delete('/:id', isAuthenticated, function(req, res) {
-  console.log('delete id =>', req.params.id);
   request.delete({
     url: config.api.host + '/contacts/' + req.params.id,
     headers: {

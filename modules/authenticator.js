@@ -62,13 +62,6 @@ passport.use(new LocalStrategy({
  * @param done
  */
 var handleSocialLogin = function(req, accessToken, refreshToken, profile, done) {
-  console.log({
-    id: profile.id,
-    provider: profile.provider,
-    accessToken: accessToken,
-    refreshToken: refreshToken,
-    data: profile
-  });
   request.post(config.api.host + '/auth/social', {
     headers: {
       'Content-Type': 'application/json'
