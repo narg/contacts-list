@@ -10,11 +10,11 @@ var paginate = require('handlebars-paginate');
 
 var handlebars = hbs.create();
 handlebars.registerHelper('fullName', function(name) {
-    if (name) {
-        return _.upperFirst(name.title) + ' ' + _.upperFirst(name.first) + ' ' + _.upperFirst(name.last);
-    }
+  if (name) {
+    return _.upperFirst(name.title) + ' ' + _.upperFirst(name.first) + ' ' + _.upperFirst(name.last);
+  }
 
-    return name;
+  return name;
 });
 
 // TODO: Paginate helper does not work well when pageCount is zero

@@ -38,6 +38,7 @@
     "curly": ["error", "all"]
   },
   "plugins": [
-    "json"
+    "json",
+    "markdown"
   ]
 }

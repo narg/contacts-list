@@ -9,8 +9,8 @@ var eslint = require('gulp-eslint');
 /**
  * Detect errors and potential problems in javascript resourcesa
  */
-gulp.task('lint', function () {
-    return gulp.src(['**/*.js', '!node_modules/**', '!coverage/**'])
+gulp.task('lint', function() {
+  return gulp.src(['**/*.js', '!node_modules/**', '!coverage/**'])
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failOnError());
@@ -19,8 +19,8 @@ gulp.task('lint', function () {
 /**
  * Compile Sass files
  */
-gulp.task('sass', function () {
-    return gulp.src('./assets/stylesheets/**/*.scss')
+gulp.task('sass', function() {
+  return gulp.src('./assets/stylesheets/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./public/stylesheets'));
 });
@@ -28,8 +28,8 @@ gulp.task('sass', function () {
 /**
  * Watch Sass files to compile
  */
-gulp.task('sass:watch', function () {
-    gulp.watch('./sass/**/*.scss', ['sass']);
+gulp.task('sass:watch', function() {
+  gulp.watch('./sass/**/*.scss', ['sass']);
 });
 
 /**

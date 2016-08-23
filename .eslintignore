@@ -6,5 +6,6 @@ libraries
 
 # Other dependencies
 npm-debug.log
-sonar-project.properties
 coverage
+
+sonar-project.properties
