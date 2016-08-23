@@ -62,7 +62,7 @@ passport.use(new LocalStrategy({
  * @param profile
  * @param done
  */
-var handleSocialLogin = function (accessToken, refreshToken, profile, done) {
+var handleSocialLogin = function (req, accessToken, refreshToken, profile, done) {
     request.post(config.api.host + '/auth/social', {
         headers: {
             'Content-Type': 'application/json'
@@ -87,6 +87,8 @@ var handleSocialLogin = function (accessToken, refreshToken, profile, done) {
             return done(body);
         }
 
+        // Save token
+        req.session.token = response.headers['authorization'];
         done(null, body);
     });
 };
@@ -97,7 +99,8 @@ var handleSocialLogin = function (accessToken, refreshToken, profile, done) {
 passport.use(new GitHubStrategy({
         clientID: config.passport.strategies.github.clientId,
         clientSecret: config.passport.strategies.github.clientSecret,
-        callbackURL: config.passport.strategies.github.callbackUrl
+        callbackURL: config.passport.strategies.github.callbackUrl,
+        passReqToCallback: true
     },
     handleSocialLogin
 ));
@@ -108,7 +111,8 @@ passport.use(new GitHubStrategy({
 passport.use(new FacebookStrategy({
         clientID: config.passport.strategies.facebook.clientId,
         clientSecret: config.passport.strategies.facebook.clientSecret,
-        callbackURL: config.passport.strategies.facebook.callbackUrl
+        callbackURL: config.passport.strategies.facebook.callbackUrl,
+        passReqToCallback: true
     },
     handleSocialLogin
 ));
@@ -119,7 +123,8 @@ passport.use(new FacebookStrategy({
 passport.use(new TwitterStrategy({
         consumerKey: config.passport.strategies.twitter.consumerKey,
         consumerSecret: config.passport.strategies.twitter.consumerSecret,
-        callbackURL: config.passport.strategies.twitter.callbackUrl
+        callbackURL: config.passport.strategies.twitter.callbackUrl,
+        passReqToCallback: true
     },
     handleSocialLogin
 ));
@@ -130,7 +135,8 @@ passport.use(new TwitterStrategy({
 passport.use(new LinkedInStrategy({
         consumerKey: config.passport.strategies.linkedin.consumerKey,
         consumerSecret: config.passport.strategies.linkedin.consumerSecret,
-        callbackURL: config.passport.strategies.linkedin.callbackUrl
+        callbackURL: config.passport.strategies.linkedin.callbackUrl,
+        passReqToCallback: true
     },
     handleSocialLogin
 ));
@@ -141,7 +147,8 @@ passport.use(new LinkedInStrategy({
 passport.use(new InstagramStrategy({
         clientID: config.passport.strategies.instagram.clientId,
         clientSecret: config.passport.strategies.instagram.clientSecret,
-        callbackURL: config.passport.strategies.instagram.callbackUrl
+        callbackURL: config.passport.strategies.instagram.callbackUrl,
+        passReqToCallback: true
     },
     handleSocialLogin
 ));
@@ -152,7 +159,8 @@ passport.use(new InstagramStrategy({
 passport.use(new FoursquareStrategy({
         clientID: config.passport.strategies.foursquare.clientId,
         clientSecret: config.passport.strategies.foursquare.clientSecret,
-        callbackURL: config.passport.strategies.foursquare.callbackUrl
+        callbackURL: config.passport.strategies.foursquare.callbackUrl,
+        passReqToCallback: true
     },
     handleSocialLogin
 ));
