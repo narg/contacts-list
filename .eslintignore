@@ -1,0 +1,10 @@
+# Node dependencies
+node_modules
+
+# Bower dependencies
+libraries
+
+# Other dependencies
+npm-debug.log
+sonar-project.properties
+coverage

@@ -1,0 +1,26 @@
+{
+  "name": "contacts-list",
+  "description": "Contacts List",
+  "main": "",
+  "authors": [
+    "Necip Arg <necip.arg@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.3.7",
+    "moment": "2.14.1",
+    "font-awesome": "4.5.0",
+    "lodash": "4.15.0",
+    "async": "2.0.1",
+    "angular": "1.5.8",
+    "bootstrap-social": "5.0.0"
+  }
+}

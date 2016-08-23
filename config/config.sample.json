@@ -1,0 +1,52 @@
+{
+  "api": {
+    "host": "http://localhost:8000"
+  },
+  "redis": {
+    "host": "127.0.0.1",
+    "port": 6379,
+    "secret": "MZJ6XzpGzg2h9r73HSED",
+    "options": {
+
+    }
+  },
+  "passport": {
+    "strategies": {
+      "jwt": {
+        "authScheme": "JWT",
+        "tokenBodyField": "auth_token",
+        "tokenQueryParameterName": "auth_token"
+      },
+      "github": {
+        "clientId": "",
+        "clientSecret": "",
+        "callbackUrl": "http://localhost:3000/auth/github/callback"
+      },
+      "facebook": {
+        "clientId": "",
+        "clientSecret": "",
+        "callbackUrl": "http://localhost:3000/auth/facebook/callback"
+      },
+      "twitter": {
+        "consumerKey": "",
+        "consumerSecret": "",
+        "callbackUrl": "http://localhost:3000/auth/twitter/callback"
+      },
+      "linkedin": {
+        "consumerKey": "",
+        "consumerSecret": "",
+        "callbackUrl": "http://localhost:3000/auth/linkedin/callback"
+      },
+      "instagram": {
+        "clientId": "",
+        "clientSecret": "",
+        "callbackUrl": "http://localhost:3000/auth/instagram/callback"
+      },
+      "foursquare": {
+        "clientId": "",
+        "clientSecret": "",
+        "callbackUrl": "http://localhost:3000/auth/foursquare/callback"
+      }
+    }
+  }
+}
