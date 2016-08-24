@@ -13,6 +13,8 @@ To get started, you'll need to have the following requirements installed
 - Git
 - Node.js<sup>1</sup>
 - npm
+- bower
+- gulp
 - Redis<sup>2</sup>
 
 <sup>1</sup>See https://nodejs.org/
